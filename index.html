@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dhruv Tripathi - Single Page Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-glow {
+            text-shadow: 0 0 40px rgba(55, 19, 236, 0.5);
+        }
+        .bg-gradient-glow {
+            background: radial-gradient(circle at 70% 20%, rgba(55, 19, 236, 0.25) 0%, rgba(19, 16, 34, 0) 60%);
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }html {
+            scrollbar-width: thin;
+            scrollbar-color: #3713ec #131022;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131022;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #3713ec;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="fixed inset-0 z-0 pointer-events-none bg-gradient-glow"></div>
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<a class="size-8 rounded-lg bg-primary flex items-center justify-center text-white hover:scale-110 transition-transform" href="#home">
+<span class="font-bold text-xl">D</span>
+</a>
+<a class="text-white text-xl font-bold tracking-tight hover:text-primary transition-colors" href="#home">Dhruv Tripathi</a>
+</div>
+<nav class="hidden md:flex items-center gap-6 lg:gap-8">
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#home">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#about">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#skills">Skills<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#experience">Experience<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#certs">Certs<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#projects">Projects<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+<a class="text-slate-300 hover:text-white text-sm font-medium transition-colors relative group" href="#contact">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span></a>
+</nav>
+<div class="hidden md:block">
+<a class="h-9 px-4 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-white text-xs font-bold border border-white/10" href="#contact">
+                    Let's Talk
+                </a>
+</div>
+<button class="md:hidden text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="relative z-10 flex flex-col w-full">
+<section class="min-h-screen w-full px-6 lg:px-20 pt-28 pb-20 flex items-center justify-center relative" id="home">
+<div class="max-w-7xl mx-auto w-full">
+<div class="@container">
+<div class="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
+<div class="flex flex-col gap-8 flex-1 text-center lg:text-left section-fade">
+<div class="flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit mx-auto lg:mx-0">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Available for work</span>
+</div>
+<h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-white">
+                                            Dhruv <br class="hidden lg:block"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Tripathi</span>
+</h1>
+<h2 class="text-lg sm:text-xl text-slate-400 font-light max-w-2xl mx-auto lg:mx-0 font-body leading-relaxed">
+                                            Data Modeling &amp; Visualization Enthusiast | Power BI | Python
+                                        </h2>
+</div>
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+<a class="h-12 flex items-center justify-center px-8 rounded-lg bg-primary hover:bg-primary/90 text-white text-base font-bold tracking-wide transition-all hover:scale-105 shadow-[0_0_20px_rgba(55,19,236,0.3)]" href="#projects">
+                                            View My Work
+                                        </a>
+<a class="h-12 flex items-center justify-center px-8 rounded-lg glass-panel hover:bg-white/10 text-white text-base font-bold tracking-wide transition-all border border-white/10" href="#contact">
+                                            Get in Touch
+                                        </a>
+</div>
+<div class="flex items-center justify-center lg:justify-start gap-6 pt-6 text-slate-500">
+<a class="hover:text-primary transition-colors" href="mailto:tripathidhruv2704@gmail.com"><i class="material-symbols-outlined text-2xl">mail</i></a>
+<a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/dhruv-tripathi-91a07a36a/" target="_blank"><span class="material-symbols-outlined">dataset</span></a>
+<a class="hover:text-primary transition-colors" href="https://github.com/tripathidhruv" target="_blank"><span class="material-symbols-outlined">link</span></a>
+</div>
+</div>
+<div class="relative flex-1 w-full max-w-[500px] lg:max-w-none flex justify-center lg:justify-end section-fade" style="transition-delay: 200ms;">
+<div class="relative w-full aspect-square max-w-[400px] lg:max-w-[500px]">
+<div class="absolute inset-0 bg-primary/20 blur-[60px] rounded-full transform translate-x-4 translate-y-4"></div>
+<div class="relative w-full h-full rounded-2xl overflow-hidden border border-white/5 bg-[#1a162e]">
+<img alt="Portrait of Dhruv Tripathi"
+     class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+     src="./profile.png">
+<div class="absolute inset-0 bg-gradient-to-t from-[#131022] via-transparent to-transparent opacity-40"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl flex items-center gap-3 shadow-2xl animate-pulse">
+<div class="size-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div>
+<p class="text-white text-xs font-bold">K K Wagh Graduate</p>
+<p class="text-slate-400 text-[10px] uppercase tracking-wider">Computer Engineering</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-0 right-0 w-full flex justify-center opacity-50 animate-bounce pointer-events-none">
+<span class="material-symbols-outlined text-white text-3xl">keyboard_arrow_down</span>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative bg-gradient-to-b from-transparent to-black/20" id="about">
+<div class="max-w-4xl mx-auto section-fade">
+<div class="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row gap-10">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="h-px w-8 bg-primary"></span>
+<h3 class="text-primary font-bold uppercase tracking-widest text-sm">About Me</h3>
+</div>
+<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Bridging insights &amp; development.</h2>
+<p class="text-slate-300 text-lg leading-relaxed font-body mb-6">
+                                    Recent BTech student at K K Wagh and Computer Engineering graduate with a track record of delivering high-quality, user-centric digital solutions.
+                                </p>
+<p class="text-slate-400 text-base leading-relaxed font-body">
+                                    Specializing in bridging the gap between data-driven insights and cross-platform development. I am passionate about transforming raw data into actionable visual narratives.
+                                </p>
+</div>
+<div class="w-full md:w-1/3 flex flex-col gap-6 justify-between">
+<div class="p-5 rounded-lg bg-primary/5 border border-primary/20 h-full">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl">school</span>
+<span class="text-white font-bold text-base">Education</span>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-white text-sm font-semibold">BTech in Computer Engineering</p>
+<p class="text-slate-400 text-xs">K K Wagh Institute</p>
+<p class="text-slate-500 text-xs mt-1">2019 - 2023</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative" id="skills">
+<div class="max-w-6xl mx-auto">
+<div class="flex flex-col items-center text-center mb-16 section-fade">
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-3">Expertise</span>
+<h2 class="text-3xl md:text-5xl font-bold text-white">Technical Arsenal</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 section-fade">
+<div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors">
+<div class="size-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
+<span class="material-symbols-outlined">code</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-4">Programming</h3>
+<ul class="space-y-2 text-slate-400 text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Python</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>SQL</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Java</li>
+</ul>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors">
+<div class="size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 mb-4">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-4">Data Analysis</h3>
+<ul class="space-y-2 text-slate-400 text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>Pandas</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>NumPy</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>Data Modeling</li>
+</ul>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors">
+<div class="size-12 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-4">Visualization</h3>
+<ul class="space-y-2 text-slate-400 text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Power BI</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Tableau</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Matplotlib</li>
+</ul>
+</div>
+<div class="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors">
+<div class="size-12 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 mb-4">
+<span class="material-symbols-outlined">database</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-4">Databases</h3>
+<ul class="space-y-2 text-slate-400 text-sm">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>PostgreSQL</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>MySQL</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>MongoDB</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative bg-black/20" id="experience">
+<div class="max-w-5xl mx-auto">
+<div class="flex flex-col md:flex-row gap-16">
+<div class="md:w-1/3 section-fade">
+<span class="text-primary font-bold uppercase tracking-widest text-sm block mb-3">Career Path</span>
+<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Professional<br/>Experience</h2>
+<p class="text-slate-400 text-sm leading-relaxed">
+                            My journey in the tech industry involves hands-on experience in data analysis and software development.
+                        </p>
+</div>
+<div class="md:w-2/3 space-y-8 section-fade" style="transition-delay: 200ms;">
+<div class="relative pl-8 border-l border-white/10 pb-8 last:pb-0">
+<div class="absolute -left-1.5 top-2 w-3 h-3 rounded-full bg-primary ring-4 ring-background-dark"></div>
+<span class="text-xs font-bold text-primary mb-1 block">2023 - Present</span>
+<h3 class="text-xl font-bold text-white mb-2">Data Analyst Associate</h3>
+<p class="text-sm text-slate-400 mb-4">Tech Solutions Inc. • Pune, India</p>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                Spearheaded data cleaning and preprocessing initiatives using Python and SQL. Developed interactive dashboards in Power BI resulting in a 20% improvement in decision-making speed for the marketing team.
+                            </p>
+</div>
+<div class="relative pl-8 border-l border-white/10 pb-8 last:pb-0">
+<div class="absolute -left-1.5 top-2 w-3 h-3 rounded-full bg-slate-600 ring-4 ring-background-dark"></div>
+<span class="text-xs font-bold text-slate-500 mb-1 block">2022 - 2023</span>
+<h3 class="text-xl font-bold text-white mb-2">Junior Developer Intern</h3>
+<p class="text-sm text-slate-400 mb-4">Innovate Labs • Remote</p>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                Assisted in the development of backend APIs using Python/Flask. Collaborated with cross-functional teams to integrate database solutions and optimize query performance.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative" id="certs">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16 section-fade">
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-3">Qualifications</span>
+<h2 class="text-3xl md:text-5xl font-bold text-white">Certifications</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 section-fade">
+<div class="glass-panel p-6 rounded-xl group hover:-translate-y-2 transition-transform duration-300 cursor-default">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-yellow-500/10 text-yellow-400">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<span class="text-xs text-slate-500 font-mono">2023</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Microsoft Certified: Power BI Data Analyst Associate</h3>
+<p class="text-slate-400 text-sm">Microsoft</p>
+</div>
+<div class="glass-panel p-6 rounded-xl group hover:-translate-y-2 transition-transform duration-300 cursor-default">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-blue-500/10 text-blue-400">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<span class="text-xs text-slate-500 font-mono">2022</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Google Data Analytics Professional Certificate</h3>
+<p class="text-slate-400 text-sm">Coursera</p>
+</div>
+<div class="glass-panel p-6 rounded-xl group hover:-translate-y-2 transition-transform duration-300 cursor-default">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 rounded bg-green-500/10 text-green-400">
+<span class="material-symbols-outlined">workspace_premium</span>
+</div>
+<span class="text-xs text-slate-500 font-mono">2022</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-2 group-hover:text-primary transition-colors">Python for Data Science and Machine Learning</h3>
+<p class="text-slate-400 text-sm">Udemy</p>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative bg-gradient-to-t from-black/40 to-transparent" id="projects">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 section-fade">
+<div>
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-3 block">Portfolio</span>
+<h2 class="text-3xl md:text-5xl font-bold text-white">Featured Projects</h2>
+</div>
+<a class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-medium group" href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank">
+                        View GitHub <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 section-fade">
+<div class="group relative rounded-xl overflow-hidden glass-panel border-0 bg-[#1a162e]">
+<div class="aspect-video w-full bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-purple-900/40 group-hover:scale-105 transition-transform duration-500"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-white/20">bar_chart</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary uppercase">Power BI</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-300 uppercase">SQL</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Sales Analytics Dashboard</h3>
+<p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            A comprehensive dashboard analyzing retail sales data to identify trends, top-performing regions, and inventory bottlenecks.
+                        </p>
+<a class="inline-flex items-center text-sm font-bold text-white hover:text-primary transition-colors" href="#">
+                            View Case Study <span class="material-symbols-outlined text-sm ml-1">arrow_outward</span>
+</a>
+</div>
+</div>
+<div class="group relative rounded-xl overflow-hidden glass-panel border-0 bg-[#1a162e]">
+<div class="aspect-video w-full bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-green-900/40 to-teal-900/40 group-hover:scale-105 transition-transform duration-500"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-white/20">terminal</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary uppercase">Python</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-300 uppercase">Pandas</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Customer Churn Prediction</h3>
+<p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            Machine learning model capable of predicting customer churn with 85% accuracy, helping businesses retain valuable clients.
+                        </p>
+<a class="inline-flex items-center text-sm font-bold text-white hover:text-primary transition-colors" href="#">
+                            View Case Study <span class="material-symbols-outlined text-sm ml-1">arrow_outward</span>
+</a>
+</div>
+</div>
+<div class="group relative rounded-xl overflow-hidden glass-panel border-0 bg-[#1a162e]">
+<div class="aspect-video w-full bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-orange-900/40 to-red-900/40 group-hover:scale-105 transition-transform duration-500"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-white/20">database</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary uppercase">ETL</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-300 uppercase">Warehousing</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Automated ETL Pipeline</h3>
+<p class="text-slate-400 text-sm mb-4 line-clamp-3">
+                            Designed and implemented an automated data pipeline that reduces manual data entry time by 90% using Python scripts.
+                        </p>
+<a class="inline-flex items-center text-sm font-bold text-white hover:text-primary transition-colors" href="#">
+                            View Case Study <span class="material-symbols-outlined text-sm ml-1">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full px-6 lg:px-20 py-24 relative" id="contact">
+<div class="max-w-4xl mx-auto section-fade">
+<div class="glass-panel rounded-2xl p-8 md:p-16 text-center relative overflow-hidden">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to collaborate?</h2>
+<p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">
+                        I'm currently looking for new opportunities in Data Analysis and Engineering. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+<a class="inline-flex h-14 px-8 items-center justify-center rounded-lg bg-white text-primary text-lg font-bold tracking-wide hover:bg-slate-100 transition-colors shadow-[0_0_30px_rgba(255,255,255,0.2)]" href="mailto:tripathidhruv2704@gmail.com">
+                        Say Hello <span class="material-symbols-outlined ml-2">waving_hand</span>
+</a>
+<div class="flex justify-center gap-8 mt-12 pt-12 border-t border-white/10">
+<a class="flex flex-col items-center gap-2 text-slate-400 hover:text-white transition-colors group" href="mailto:tripathidhruv2704@gmail.com">
+<span class="p-3 rounded-full bg-white/5 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</span>
+<span class="text-sm font-medium">Email</span>
+</a>
+<a class="flex flex-col items-center gap-2 text-slate-400 hover:text-white transition-colors group" href="https://www.linkedin.com/in/dhruv-tripathi-91a07a36a/">
+<span class="p-3 rounded-full bg-white/5 group-hover:bg-[#0077b5]/20 transition-colors">
+<span class="material-symbols-outlined">group</span>
+</span>
+<span class="text-sm font-medium">LinkedIn</span>
+</a>
+<a class="flex flex-col items-center gap-2 text-slate-400 hover:text-white transition-colors group" href="https://github.com/tripathidhruv">
+<span class="p-3 rounded-full bg-white/5 group-hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined">code</span>
+</span>
+<span class="text-sm font-medium">GitHub</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-8 text-center text-slate-500 text-sm border-t border-white/5 bg-background-dark">
+<p>© 2024 Dhruv Tripathi. All rights reserved.</p>
+</footer>
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+    document.addEventListener('DOMContentLoaded', () => {
+        const fadeElements = document.querySelectorAll('.section-fade');
+        fadeElements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body></html>
